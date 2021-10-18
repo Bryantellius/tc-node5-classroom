@@ -1,0 +1,11 @@
+{
+  "name": "node5-classroom",
+  "version": "1.0.0",
+  "description": "Classroom Materials for TC-Node-5",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Ben Bryant",
+  "license": "ISC"
+}
