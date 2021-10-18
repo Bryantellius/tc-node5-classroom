@@ -7,3 +7,4 @@
 3. Google Classroom Registration
 4. Command Line
 5. Git Introduction
+6. First Day Project Primer
