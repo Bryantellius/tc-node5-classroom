@@ -57,3 +57,7 @@
 `git revert HEAD/134dssd4` - undo commits
 
 `git log` - lists previous commit history, by default author, email, date, message, checknum
+
+`git stash`
+
+`git stash pop`
