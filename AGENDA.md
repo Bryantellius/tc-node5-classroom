@@ -1,10 +1,10 @@
-# 10/18/21
+# 10/19/21
 
 ## To Do
 
-1. Class Introductions
-2. Accounts and Downloads Checklist
-3. Google Classroom Registration
-4. Command Line
-5. Git Introduction
-6. First Day Project Primer
+1. Review the Native CLI
+2. Review Git
+3. Cover the Git Intro Quiz
+4. Start Git Branching and Merging
+5. Exercise/Quiz
+6. Git Merge Conflicts
