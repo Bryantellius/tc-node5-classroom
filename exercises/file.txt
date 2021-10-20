@@ -1,2 +1,3 @@
 New file on a commit that features doesn't have
 New line
+Line 3
