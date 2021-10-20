@@ -32,3 +32,9 @@
 `git push -d <remote> <branchname>` - pushes message to delete remote branch on remote repo
 
 `git diff [--staged]` - show changes from the previously committed version and the working changes, `--staged` to check differences from staged files
+
+`git add .` - stage files
+
+`git commit -m "message"` - commit staged files
+
+`git push` - push changes to the remote upstream branch
