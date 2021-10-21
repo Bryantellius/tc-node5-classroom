@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Simple Selectors */
+html {
+  color: black;
+  font-size: 20px;
+  font-family: fantasy;
+}
+
+main {
+  color: darkblue;
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+section {
+  color: darkgoldenrod;
+}
+
+div {
+  color: gray;
+}
+
+p {
+  color: red;
+  margin: 100px 0;
+  border: 5px solid green;
+  padding: 50px;
+}
+
+a {
+  color: pink;
+}

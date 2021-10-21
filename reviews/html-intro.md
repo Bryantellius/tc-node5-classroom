@@ -6,6 +6,11 @@
 - Easy to use, _loosely written_
 - ~180 elements as of HTML5
 
+## Block vs Inline Elements
+
+- Block level elements take up the full available space on a row
+- Inline level elements only take up the space needed to render the element
+
 ## Anatomy of an HTML Element
 
 - Opening and closing\* tags, `<tag></tag>`
@@ -63,6 +68,7 @@
 | video      | renders videos                                                         |
 | a          | links                                                                  |
 | main       | main content of a page                                                 |
+| section    | a section of the main content of a page                                |
 | aside      | ancillary content to the main content                                  |
 | article    | article content container                                              |
 | header     | page header information, e.g. site logo, nav, etc                      |
