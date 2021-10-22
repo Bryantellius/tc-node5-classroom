@@ -34,3 +34,17 @@ p {
 a {
   color: pink;
 }
+
+nav ul {
+  display: inline;
+}
+
+li {
+  display: inline;
+}
+
+#moveMe {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
