@@ -9,42 +9,13 @@ html {
   font-family: fantasy;
 }
 
-main {
-  color: darkblue;
-  max-width: 600px;
-  margin: 50px auto;
-  text-align: center;
+.grid-container {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: auto;
 }
 
-section {
-  color: darkgoldenrod;
-}
-
-div {
-  color: gray;
-}
-
-p {
-  color: red;
-  margin: 100px 0;
-  border: 5px solid green;
-  padding: 50px;
-}
-
-a {
-  color: pink;
-}
-
-nav ul {
-  display: inline;
-}
-
-li {
-  display: inline;
-}
-
-#moveMe {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+.grid-container > div {
+  border: 1px dotted green;
 }
