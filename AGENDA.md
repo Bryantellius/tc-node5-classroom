@@ -1,10 +1,11 @@
-# 10/21/21
+# 10/22/21
 
 ## To Do
 
-1. Review Git Merge Conflict Quiz
-2. Review HTML
-3. Denise's Career Services Meeting
-4. CSS Intro
-5. DevTools Rundown
-6. CSS Exercises
+1. Review HTML Intro Quiz
+2. Review CSS
+3. Styling HTML Exercise
+4. HTML Forms and Tables
+5. Exercise
+6. CSS Flexbox and Grid
+7. Exercise
