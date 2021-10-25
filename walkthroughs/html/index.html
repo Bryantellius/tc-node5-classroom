@@ -12,48 +12,50 @@
     <link rel="stylesheet" href="../css/index.css" />
   </head>
   <body>
-    <header>
-      <nav>
-        <span>University</span>
-        <ul>
-          <li>
-            <a class="nav-link" href="./index.html">Home</a>
-          </li>
-          <li>
-            <a class="nav-link" href="./about.html">About</a>
-          </li>
-          <li>
-            <a class="nav-link" href="./contact.html">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-
-    <main class="grid-container">
-      <div id="box1">Box</div>
-      <div>Box</div>
-      <div>Box</div>
-      <div>Box</div>
-      <div>Box</div>
-      <div>Box</div>
-      <div>Box</div>
-    </main>
-
-    <footer>
-      <div>
-        <p>Company Desc.</p>
+    <div class="grid-container">
+      <div class="grid-item" id="header-grid-item">
+        <header>
+          <nav>
+            <span>University</span>
+            <ul>
+              <li>
+                <a class="nav-link" href="./index.html">Home</a>
+              </li>
+              <li>
+                <a class="nav-link" href="./about.html">About</a>
+              </li>
+              <li>
+                <a class="nav-link" href="./contact.html">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
       </div>
-      <ul>
-        <li>
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li>
-          <a class="nav-link" href="/">About</a>
-        </li>
-        <li>
-          <a class="nav-link" href="/">Contact</a>
-        </li>
-      </ul>
-    </footer>
+      <div class="grid-item" id="aside-grid-item">Side Nav</div>
+      <div class="grid-item" id="main-grid-item">
+        <main>
+          <h1>Main Content</h1>
+        </main>
+      </div>
+      <div class="grid-item" id="social-grid-item">Social / Share</div>
+      <div class="grid-item" id="footer-grid-item">
+        <footer>
+          <div>
+            <p>Company Desc.</p>
+          </div>
+          <ul>
+            <li>
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li>
+              <a class="nav-link" href="/">About</a>
+            </li>
+            <li>
+              <a class="nav-link" href="/">Contact</a>
+            </li>
+          </ul>
+        </footer>
+      </div>
+    </div>
   </body>
 </html>
