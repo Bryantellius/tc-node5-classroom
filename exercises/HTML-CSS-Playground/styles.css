@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 100%;
+}
+
+.root {
+  min-height: 100vh;
+  background: radial-gradient(#111, #000);
+  color: #ddd;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+  margin: 0.5rem;
+}
+
+.badge {
+  border: 1px solid gray;
+  border-radius: 9999px;
+  padding: 0.25rem 0.35rem;
+}
+
+.code-badge {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  margin-right: 0.5rem;
+}
+
+.bg-blue {
+  background-color: blue;
+}
+
+.bg-yellow {
+  background-color: yellow;
+}
+
+.bg-green {
+  background-color: green;
+}
+
+.link {
+  text-decoration: none;
+  padding: 0.25rem;
+  color: lightskyblue;
+  font-family: inherit;
+}
+
+.text-muted {
+  color: #aaa;
+}
+
+@media (min-width: 768px) {
+  main {
+    max-width: 700px;
+  }
+}

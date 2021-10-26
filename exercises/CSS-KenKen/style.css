@@ -1,1 +1,80 @@
 /* Style it up */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+header {
+  height: 20vmin;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  width: 100vmin;
+  height: 100vmin;
+  margin: 2rem auto;
+  border: 6px solid black;
+}
+
+.grid-items {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#box1,
+#box2,
+#box3,
+#box4,
+#box5,
+#box8,
+#box9,
+#box10,
+#box11 {
+  border-bottom: 6px solid black;
+}
+
+#box3,
+#box7,
+#box10,
+#box11,
+#box12,
+#box15 {
+  border-left: 6px solid black;
+}
+
+.prompt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0.25rem;
+}
+
+.answer {
+  border: none;
+  width: 50%;
+  height: 50%;
+  font-size: 2rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  html,
+  body {
+    font-size: 24px;
+  }
+  .grid {
+    height: 60vmin;
+    width: 60vmin;
+  }
+}
