@@ -1,11 +1,11 @@
-# 10/25/21
+# 10/27/21
 
 ## To Do
 
-1. Review HTML and CSS
-2. Review CSS flexbox and grid
-3. Media Queries and Relative Sizing
-4. Build a component
-5. JavaScript Intro
-6. JavaScript Variables Exercise
-7. JavaScript Operators
+1. Review JavaScript Variables and Data Types
+2. Cover JS Intro Quiz
+3. Review JavaScript Operators/Exercise
+4. JavaScript Selection Statements
+5. JavaScript SS Exercise
+6. JavaScript Loops
+7. JS Loops Exercise
