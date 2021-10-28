@@ -43,7 +43,6 @@ html {
   color: white;
   flex-basis: 25%;
   filter: drop-shadow(0 0 5px #eee);
-  animation: rotate 20s infinite;
 }
 
 .img-container > svg:nth-child(1) {
@@ -56,11 +55,4 @@ html {
 
 .img-container > svg:nth-child(4) {
   transform: rotate(90deg);
-}
-
-@keyframes rotate {
-  50% {
-    transform: rotate(360deg) translateY(50%) scale(1.015);
-    color: greenyellow;
-  }
 }
