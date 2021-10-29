@@ -1,11 +1,10 @@
-# 10/27/21
+# 10/29/21
 
 ## To Do
 
-1. Review JavaScript Variables and Data Types
-2. Cover JS Intro Quiz
-3. Review JavaScript Operators/Exercise
-4. JavaScript Selection Statements
-5. JavaScript SS Exercise
-6. JavaScript Loops
-7. JS Loops Exercise
+1. Review JavaScript Functions
+2. Review Scopes
+3. Cover JS Loops/Control Flow
+4. Start JS Objects
+5. JS Objects Exercise
+6. Class Codewars
