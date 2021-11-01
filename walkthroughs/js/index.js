@@ -30,7 +30,6 @@ class Game {
         );
       } else {
         this.guesses.push(guess);
-        console.log(guess, this.number);
         if (guess > this.number) {
           this.giveFeedback(`${guess} is too high`);
         } else if (guess < this.number) {
