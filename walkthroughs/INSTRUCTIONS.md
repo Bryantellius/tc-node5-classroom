@@ -1,4 +1,4 @@
-# JavaScript Functions
+# JavaScript Object-Oriented Programming
 
 ## Getting Started
 
@@ -9,34 +9,32 @@
 5. Follow the instructions on the README.md file to complete exercises
 6. Open the app.js file to get started
 
-## Exercise 1: Odd Numbers
+## Exercise 1
 
-- In the past, we created a selection statement inside a loop that counted from 1 to 100, and only printed out the odd numbers.
-- Your task is to write a function printOdds() that takes one parameter, count, and uses a loop and selection statement to count to the number passed in, printing out the odd numbers.
+- Expanding from our exercise example during the lesson, create a parent class `class Person {}` with properties for `name`, `pets`, `residence`, and `hobbies`. The Person class will also have a method `info()` and `greeting()`.
 
-1. Declare a function named `printOdds` using declaration notation (`function <name>(){...}`)
-2. The function should take in one parameter named `count`
-3. The function body should:
-   - contain a `for loop` that counts to the parameter passed in,
-   - an `if/else` statement that determines if the current value is odd,
-   - and then `console.log()` the odd value to the console
-4. BONUS: Now that you do not know exactly what number may be passed in as `count`, use an `if` statement to account for a negative `count` being passed in.
+1. Use class notation to create a class named `Person`
+2. Declare the `constructor()` method with parameters `name` (string), `pets` (number), `residence` (string), and `hobbies` (array) allowed to be passed in
+3. The `constructor()` method assigns `this.` properties to each parameter
+4. Declare an `info()` method on the class that `console.log`'s a string giving information about the Person object
+   - You should display the `name`, number of `pets`, `residence`, and each hobby from the `hobbies` array
+5. Declare a `greeting()` method that `console.log`'s the sound of an Person... ex: `greeting() {console.log("Hello fellow person!")}`
 
-## Exercise 2: Legal?
+Now we'll create a subclass `Coder` that inherits from our `Person` class
 
-- Write a function that receives a name and age, and prints a greeting message to the console using the name.
+1. Use class notation to create a class named `Coder` that inherits from the `Person` class
+2. Declare the `constructor()` method with parameters `name` (string), `pets` (number), `residence` (string), and `hobbies` (array) allowed to be passed in
+3. Call the `super()` method inside the `constructor` method and pass in the given parameters
+4. Still inside the `constructor` body, assign `this.occupation` to "Full Stack Web Developer"
+5. Override the `greeting()` method to `console.log` a custom greeting from a coder...
 
-1. Declare a function named `checkAge` using declaration notation (`function <name>(){...}`)
-2. The function should take in one parameter named `age`
-3. The function body should:
-   - declare and initialize an `aboveSixteen` local variable with string value: `"You can drive!"`,
-   - declare and initialize an `belowSixteen` local variable with string value: `"Sorry, but you need to wait until you're 16."`,
-   - an `if/else` statement that determines if the `age` value is below 16,
-   - and then `console.log()` the correct message to the console.
-4. BONUS: Remember that paramaters are optional, and no `name` or `age` value could be passed in. Correctly account for no parameter being passed in.
+Finally, let's create instances of our classes
 
-## More Practice
+1. Create a variable and assign a Person object to it using the `new` keyword followed by the class `constructor`
+2. Create a variable and assign a Coder object to it using the `new` keyword followed by the class `constructor`
+3. Call the object methods and `console.log` the object properties to test your work
 
-- Assign a function to a variable
-- Pass a function as a parameter(argument)
-- Return a function from a function
+## BONUS
+
+1. Refactor the `greeting()` methods to accept a `name` parameter and uses in to personalize the greeting output
+2. Now when you call the `coder.greeting()` or `person.greeting()` methods, you can pass in the `name` property from an instantiated `Person` or `Coder` object

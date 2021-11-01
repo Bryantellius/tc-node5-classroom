@@ -15,10 +15,15 @@ html {
   height: 100vh;
   overflow-y: auto;
   background: linear-gradient(to bottom right, purple, #0094c8);
+  position: relative;
 }
 
 .d-flex {
   display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
 }
 
 .justify-content-center {
@@ -52,10 +57,23 @@ html {
 #ampm {
   font-size: 1rem;
   align-self: flex-end;
+  height: fit-content;
 }
 
 .flash {
   animation: flash 1s linear;
+}
+
+.progress-ring {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.seconds-ring {
+  transition: 0.35s stroke-dashoffset;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
 }
 
 @keyframes flash {

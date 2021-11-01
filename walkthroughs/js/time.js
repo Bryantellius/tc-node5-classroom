@@ -2,10 +2,25 @@ const hr = document.querySelector("#hr");
 const min = document.querySelector("#min");
 const ampm = document.querySelector("#ampm");
 
+const circle = document.querySelector("circle");
+let radius = circle.r.baseVal.value;
+let circumference = radius * 2 * Math.PI;
+
+circle.style.strokeDasharray = `${circumference} ${circumference}`;
+circle.style.strokeDashoffset = `${circumference}`;
+
+function setProgress(percent) {
+  const offset = circumference - (percent / 60) * circumference;
+  circle.style.strokeDashoffset = offset;
+}
+
 function updateTime() {
   let currentTime = new Date();
   let hrs = currentTime.getHours().toString();
   let mins = currentTime.getMinutes().toString();
+  let secs = currentTime.getSeconds();
+
+  setProgress(secs);
 
   if (ampm.textContent == "AM" && hrs >= 12) {
     ampm.classList.add("flash");
