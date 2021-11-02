@@ -6,6 +6,7 @@
 
 /* Simple Selectors */
 html {
+  position: relative;
   color: black;
   font-size: calc(16px + 6 * ((100vw - 320px) / 680));
   font-family: monospace;
@@ -74,6 +75,28 @@ html {
   transition: 0.35s stroke-dashoffset;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
+}
+
+.modal {
+  z-index: 10;
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-body {
+  max-width: 600px;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px black;
 }
 
 @keyframes flash {
