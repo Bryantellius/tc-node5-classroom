@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js" defer></script>
+  </head>
+
+  <body>
+    <main class="root">
+      <div class="alert">
+        <p class="alert-msg"></p>
+      </div>
+      <h1>JavaScript DOM Exercises</h1>
+      <!-- Exercise #1: SELECTING/MANIPULATING ELEMENTS -->
+      <div class="exercise-container exercise1">
+        <h2>Inputs</h2>
+        <form>
+          <label for="name">Name:</label
+          ><input type="text" name="name" id="name" placeholder="Jane Doe" />
+          <label for="email">Email</label
+          ><input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="name@domain.com"
+          />
+          <button id="formBtn" type="submit">Submit</button>
+        </form>
+        <hr />
+        <table id="contactsTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ben Bryant</td>
+              <td>bbryant@truecoders.io</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Exercise #2: CREATING/APPENDING ELEMENTS/OBJECTS -->
+      <div class="exercise-container exercise2">
+        <h2>EXERCISE 2</h2>
+        <div id="parent"></div>
+        <!-- TODO: Create a <p> using this element.createElement() and put this text inside "I am a <p> tag" -->
+        <!-- TODO: Append the created node to the parent node using the element.appendChild() method-->
+
+        <!-- TODO: Create a <a> using this element.createElement() and put this text inside "Visit me" -->
+        <!-- TODO: Insert the created <a> after the parent but before the one you just created using the element.insertBefore() method-->
+      </div>
+
+      <!-- Exercise #3: REMOVING/REPLACING ELEMENTS/OBJECTS -->
+      <div id="exercise3" class="exercise-container">
+        <h2>EXERCISE 3</h2>
+        <p id="N1">Child Node #1</p>
+      </div>
+
+      <!-- Exercise #4: ANIMATIONS -->
+      <div class="exercise-container exercise4">
+        <h2>EXERCISE 4</h2>
+        <div id="container">
+          <div id="box"></div>
+        </div>
+      </div>
+
+      <!-- Exercise #5: DOM EVENTS -->
+      <div class="exercise-container exercise5">
+        <h2>EXERCISE 5</h2>
+        <button id="btn">View Modal</button>
+      </div>
+    </main>
+  </body>
+</html>

@@ -2,72 +2,65 @@ console.log("Script Attached");
 
 let bestScore = 0;
 
-const compareBest = (score) => {
-  if (bestScore == 0) {
-    bestScore = score;
-  } else {
-    if (score < bestScore) {
-      bestScore = score;
-      return true;
-    } else {
-      return false;
-    }
-  }
+// ELEMENT COLLECTIONS
+const elements = {
+  feedback: document.querySelector("#feedback"),
+  score: document.querySelector("#score"),
+  bestScore: document.querySelector("#bestScore"),
+  guess: document.querySelector("#guess"),
+  guessBtn: document.querySelector("#guessBtn"),
+  form: document.querySelector("form"),
+  restartBtn: document.querySelector("#restartBtn"),
+  prevGuesses: document.querySelector("#prevGuesses"),
 };
 
-const startGame = (range) => {
-  let limit = range;
-  let number = Math.floor(Math.random() * limit) + 1; // 1-100
-  let guess;
-  let isPlaying = true;
-  let score = 0;
+// GAME VALUES
+let limit;
+let number;
+let guess;
+let isPlaying = false;
+let score = 0;
 
-  const compare = (num, guess) => {
-    if (num > guess) {
-      return `${guess} is too low`;
-    } else if (num < guess) {
-      return `${guess} is too high`;
-    } else {
-      isPlaying = false;
-      return `Congrats! ${guess} was correct.`;
-    }
-  };
+// GAME ACTIONS
+elements.form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  startGame();
+});
 
-  const playTurn = () => {
-    guess = prompt(
-      `Guess a number between 1 and ${limit}:\n(Type 'quit' to leave)`
-    );
-    if (guess.toLowerCase() == "quit") {
-      isPlaying = false;
-      alert("See ya later!");
-    } else if (isNaN(parseInt(guess))) {
-      alert(`${guess} is not a valid guess. Try again.`);
-    } else {
-      alert(compare(number, guess));
-    }
-    score++;
-    if (isPlaying) playTurn();
-  };
+// GAME FUNCTIONS
+function startGame() {
+  // Change 'Start' prompt to 'Guess' to reuse btn
+  elements.guessBtn.textContent = "Guess";
 
-  alert("Welcome to my number guessing game! Click 'OK' to start:");
+  // Enable inputs
+  elements.guess.disabled = false;
 
-  playTurn();
+  // Swap btn click handlers from 'startGame' to 'evalGuess'
+  elements.form.removeEventListener("submit", startGame);
+  elements.form.addEventListener("submit", evalGuess);
 
-  let isBest = compareBest(score);
+  number = Math.floor(Math.random() * 100) + 1;
+  isPlaying = true;
+}
 
-  if (isBest) {
-    alert(`You beat your previous high score with ${bestScore}.`);
+function evalGuess() {
+  // Test the guess.value against generated number
+  updateDOM("feedback", compare(number, elements.guess.value));
+}
+
+// UTILITIES
+
+function updateDOM(ele, msg) {
+  elements[ele].textContent = msg;
+}
+
+function compare(num, guess) {
+  if (num > guess) {
+    return `${guess} is too low`;
+  } else if (num < guess) {
+    return `${guess} is too high`;
   } else {
-    alert(`You scored ${score}. \nTry again to beat your best!`);
+    isPlaying = false;
+    return `Congrats! ${guess} was correct.`;
   }
-
-  let playAgain = prompt(
-    "Would you like to play again?:\n(Type 'yes' to proceed)"
-  );
-
-  if (playAgain.toLowerCase() == "yes") {
-    startGame();
-  }
-};
-
-startGame(100);
+}

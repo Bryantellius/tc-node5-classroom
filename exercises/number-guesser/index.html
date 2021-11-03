@@ -6,33 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Number Guessing Game</title>
   </head>
-  <style>
-    html {
-      font-size: 20px;
-      text-align: center;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    }
-    .root {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .hero {
-      max-width: 600px;
-      width: 100%;
-    }
-  </style>
+  <link rel="stylesheet" href="index.css" />
   <script src="index.js" defer></script>
   <body>
     <div class="root">
       <div class="hero">
         <h1>Number Guessing Game</h1>
-        <p>
-          Open the dev tools with <kbd>FN + F12</kbd>, or right-click and choose
-          'Inspect'.
-        </p>
+        <hr />
+        <div class="scores">
+          <div
+            class="d-flex flex-column justify-content-center align-items-center"
+          >
+            <span>Highscore</span><span id="bestScore">0</span>
+          </div>
+          <div
+            class="d-flex flex-column justify-content-center align-items-center"
+          >
+            <span>Score</span><span id="score">0</span>
+          </div>
+        </div>
+        <hr />
+        <div class="game-board">
+          <p id="feedback">Click start to begin!</p>
+          <p id="prevGuesses">-</p>
+          <form>
+            <input type="text" name="guess" id="guess" disabled/><button
+              type="button"
+              id="guessBtn"
+            >
+              Start
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </body>

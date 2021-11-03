@@ -1,9 +1,10 @@
-# 11/2/21
+# 11/3/21
 
 ## To Do
 
-1. Review JavaScript OOP
-2. Codewars
-3. Number Guessing Game
-4. JavaScript DOM Lecture
-5. JavaScript DOM Exercise
+1. Getters and Setter (perhaps)
+2. Review JavaScript DOM
+3. Codewars
+4. JS DOM Exercises
+5. Number Guessing Game w/ DOM
+6. JavaScript Error Handling
