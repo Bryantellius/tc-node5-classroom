@@ -4,40 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Number Guessing Game</title>
+    <title>Math Game</title>
   </head>
   <link rel="stylesheet" href="index.css" />
   <script src="index.js" defer></script>
   <body>
     <div class="root">
-      <div class="hero">
-        <h1>Number Guessing Game</h1>
-        <hr />
-        <div class="scores">
-          <div
-            class="d-flex flex-column justify-content-center align-items-center"
-          >
-            <span>Highscore</span><span id="bestScore">0</span>
-          </div>
-          <div
-            class="d-flex flex-column justify-content-center align-items-center"
-          >
-            <span>Score</span><span id="score">0</span>
-          </div>
-        </div>
-        <hr />
-        <div class="game-board">
-          <p id="feedback">Click start to begin!</p>
-          <p id="prevGuesses">-</p>
-          <form>
-            <input type="text" name="guess" id="guess" disabled/><button
-              type="button"
-              id="guessBtn"
-            >
-              Start
-            </button>
-          </form>
-        </div>
+      <div class="board">
+        <select name="difficulty" id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <h1 id="prompt">What is the sum of:</h1>
+        <p id="question">1 + 1</p>
+        <form action="">
+          <input type="number" id="answer" name="answer" placeholder="1" />
+          <button id="submitBtn" type="submit">Answer</button>
+        </form>
       </div>
     </div>
   </body>

@@ -1,42 +1,13 @@
-let digits = document.querySelectorAll(".digit");
-let modal = document.querySelector(".modal");
+let productFromDatabase = {
+  name: "Macbook",
+  color: "silver",
+  price: 1299.99,
+  salePercentage: 10,
+};
 
-function escExit(event) {
-  console.log(event);
-  if (event.keyCode == 27) {
-    modal.style.display = "none";
-    document.removeEventListener("keyup", escExit);
-  }
+function calcSaleTotal({ price, salePercentage }) {
+  return price * salePercentage + price;
 }
 
-setTimeout(function () {
-  modal.style.display = "flex";
-  document.addEventListener("keyup", escExit);
-}, 3000);
-
-for (let span of digits) {
-  span.onclick = function () {
-    span.textContent = prompt("Change me:", span.textContent);
-  };
-}
-
-let input = document.querySelector("#message");
-let title = document.querySelector("#title");
-
-input.addEventListener("keyup", function (event) {
-  title.textContent = event.target.value;
-});
-
-document
-  .querySelector(".modal-btn:nth-child(2)")
-  .addEventListener("click", function () {
-    modal.style.display = "none";
-    document.removeEventListener("keyup", escExit);
-  });
-
-modal.addEventListener("click", function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-    document.removeEventListener("keyup", escExit);
-  }
-});
+calcSaleTotal(productFromDatabase);
+calcSaleTotal({ price: 100, salePercentage: 13 });

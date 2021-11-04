@@ -1,66 +1,59 @@
 console.log("Script Attached");
 
-let bestScore = 0;
+let difficulty = document.querySelector("#difficulty");
+let promptP = document.querySelector("#prompt");
+let question = document.querySelector("#question");
+let answer = document.querySelector("#answer");
+let submitBtn = document.querySelector("#submitBtn");
+let form = document.querySelector("form");
+let x;
+let y;
+let correct; // 2 by default
+let questionStr;
 
-// ELEMENT COLLECTIONS
-const elements = {
-  feedback: document.querySelector("#feedback"),
-  score: document.querySelector("#score"),
-  bestScore: document.querySelector("#bestScore"),
-  guess: document.querySelector("#guess"),
-  guessBtn: document.querySelector("#guessBtn"),
-  form: document.querySelector("form"),
-  restartBtn: document.querySelector("#restartBtn"),
-  prevGuesses: document.querySelector("#prevGuesses"),
+// Difficulty Dictionary
+let levels = {
+  easy: 10,
+  medium: 100,
+  hard: 10000,
 };
 
-// GAME VALUES
-let limit;
-let number;
-let guess;
-let isPlaying = false;
-let score = 0;
+updateQuestion();
 
-// GAME ACTIONS
-elements.form.addEventListener("submit", function (event) {
+form.addEventListener("submit", function (event) {
   event.preventDefault();
-  startGame();
+
+  evaluateAnswer();
 });
 
-// GAME FUNCTIONS
-function startGame() {
-  // Change 'Start' prompt to 'Guess' to reuse btn
-  elements.guessBtn.textContent = "Guess";
+function evaluateAnswer() {
+  // Disable form submissions until next question
+  answer.disabled = true;
+  submitBtn.disabled = true;
 
-  // Enable inputs
-  elements.guess.disabled = false;
-
-  // Swap btn click handlers from 'startGame' to 'evalGuess'
-  elements.form.removeEventListener("submit", startGame);
-  elements.form.addEventListener("submit", evalGuess);
-
-  number = Math.floor(Math.random() * 100) + 1;
-  isPlaying = true;
-}
-
-function evalGuess() {
-  // Test the guess.value against generated number
-  updateDOM("feedback", compare(number, elements.guess.value));
-}
-
-// UTILITIES
-
-function updateDOM(ele, msg) {
-  elements[ele].textContent = msg;
-}
-
-function compare(num, guess) {
-  if (num > guess) {
-    return `${guess} is too low`;
-  } else if (num < guess) {
-    return `${guess} is too high`;
+  // Check the input.value against the question answer
+  // Give feedback
+  if (answer.value == correct) {
+    promptP.textContent = "Correct!";
   } else {
-    isPlaying = false;
-    return `Congrats! ${guess} was correct.`;
+    promptP.textContent = `Incorrect. ${questionStr} = ${correct}...`;
   }
+
+  // Generate new question
+  // Update DOM
+  setTimeout(updateQuestion, 3000);
+}
+
+function updateQuestion() {
+  answer.value = "";
+  answer.disabled = false;
+  answer.focus();
+  submitBtn.disabled = false;
+  promptP.textContent = "What is sum of:";
+
+  x = Math.round(Math.random() * levels[difficulty.value]);
+  y = Math.round(Math.random() * levels[difficulty.value]);
+  correct = x + y;
+  questionStr = `${x} + ${y}`;
+  question.textContent = questionStr;
 }

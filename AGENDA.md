@@ -1,10 +1,10 @@
-# 11/3/21
+# 11/4/21
 
 ## To Do
 
-1. Getters and Setter (perhaps)
+1. Getters and Setter
 2. Review JavaScript DOM
 3. Codewars
-4. JS DOM Exercises
-5. Number Guessing Game w/ DOM
-6. JavaScript Error Handling
+4. Denise's Workshop
+5. JS Error Handling
+6. JS DOM Library Project
