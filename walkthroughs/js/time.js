@@ -36,7 +36,7 @@ function updateTime() {
     ampm.textContent = "AM";
   }
 
-  hrs = regulateHours(hrs);
+  hrs = regulateHours(hrs).toString();
 
   if (mins != parseInt(min.textContent)) {
     if (mins.length == 1) {
