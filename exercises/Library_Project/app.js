@@ -1,7 +1,8 @@
 console.log("Hello World!\n==========\n");
 
 class Book {
-  constructor(title, author, read) {
+  constructor(id, title, author, read) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.read = read;
@@ -36,18 +37,21 @@ class Library {
       this.DOMelements.hasRead.checked = false;
     });
 
-    this.bookCount = 1;
-    this.books = [new Book("Name of the Wind", "Patrick Rothfuss", true)];
+    this.nextId = 2;
+    this.books = [new Book(1, "Name of the Wind", "Patrick Rothfuss", true)];
 
     this.books.forEach((book) => this.updateDOM(book));
   }
 
   addBook(title, author, read) {
-    let newBook = new Book(title, author, read);
+    let newBook = new Book(this.nextId++, title, author, read);
     this.books.push(newBook);
-    this.bookCount++;
 
     this.updateDOM(newBook);
+  }
+
+  removeBook(id) {
+    this.books = this.books.filter((book) => book.id !== id);
   }
 
   updateDOM(book) {
@@ -65,8 +69,12 @@ class Library {
     readCheckbox.type = "checkbox";
     readCheckbox.checked = book.read;
     tdRead.appendChild(readCheckbox);
-    
+
     tr.style.backgroundColor = book.read ? "#DDD" : "#FFF";
+    tr.addEventListener("dblclick", () => {
+      this.removeBook(book.id);
+      this.DOMelements.tbody.removeChild(tr);
+    });
     tr.append(tdTitle, tdAuthor, tdRead);
     this.DOMelements.tbody.appendChild(tr);
   }
