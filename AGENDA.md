@@ -1,10 +1,10 @@
-# 11/5/21
+# 11/9/21
 
 ## To Do
 
-1. Codewars
-2. JS Library Project
-3. JS Promises Lecture
-4. JS Promises Exercise
-5. JS Fetch API Lecture
-6. JS Fetch API Exercise
+1. JS Promises Review
+2. JS Promises Quiz
+3. Codewars
+4. JS Fetch API Exercise
+5. Practice Time
+6. NPM and Webpack

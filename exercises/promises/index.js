@@ -37,7 +37,7 @@ function createMessage(url) {
   }
   div.classList.add("toMessage");
   response.appendChild(div);
-  div.scrollTo()
+  div.scrollIntoView({  behavior: "smooth", block: "end" });
   formBtn.disabled = false;
   message.value = "";
   message.focus();

@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 20px;
+  font-family: monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  color: #eee;
+  min-height: 100vh;
+  background: linear-gradient(to bottom left, #333, #111);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.img-fluid {
+  max-width: 100%;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px #000;
+  background-color: #ddd;
+  color: #333;
+  text-align: start;
+  flex: 1;
+  width: fit-content;
+}
+
+.groupStats {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.groupStats * {
+  margin: 0.25rem 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.col {
+  flex-basis: 33.3333%;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.25rem;
+}
+
+.alert {
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.alert-danger {
+  background-color: tomato;
+  color: white;
+}
+
+.alert-primary {
+  background-color: #0094c8;
+  color: white;
+}
+
+.hide {
+  display: none;
+}
