@@ -15,6 +15,7 @@ let elements = {
   question: document.querySelector("#question"),
   answer: document.querySelector("#answer"),
   submitBtn: document.querySelector("#submitBtn"),
+  clock: document.querySelector("#clock"),
   form: document.querySelector("form"),
 };
 
@@ -22,6 +23,13 @@ let x;
 let y;
 let correct; // 2 by default
 let questionStr;
+let guesses = 0;
+
+// Clock Values
+let hrs = 0;
+let mins = 0;
+let secs = 0;
+let timer;
 
 // Difficulty Dictionary
 let levels = {
@@ -30,10 +38,34 @@ let levels = {
   hard: 10000,
 };
 
+const updateClock = function () {
+  secs++;
+
+  if (secs > 59) {
+    mins++;
+    secs = 0;
+  }
+
+  if (mins > 59) {
+    hrs++;
+    mins = 0;
+  }
+
+  if (hrs > 23) {
+    clearInterval(timer);
+  }
+
+  elements.clock.textContent = `${hrs.toString().padStart(2, "0")}:${mins
+    .toString()
+    .padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+};
+
 const updateQuestion = function updateQuestion() {
   elements.answer.value = "";
   elements.answer.disabled = false;
-  elements.answer.focus();
+  if (guesses > 0) {
+    elements.answer.focus();
+  }
   elements.submitBtn.disabled = false;
   elements.promptP.textContent = "What is sum of:";
 
@@ -78,12 +110,19 @@ const evaluateAnswer = function evaluateAnswer() {
   setTimeout(updateQuestion, 3000);
 };
 
-form.addEventListener("submit", function (event) {
+elements.form.addEventListener("submit", function (event) {
   event.preventDefault();
+  guesses++;
 
   try {
     evaluateAnswer();
   } catch (err) {
     alert("An error occurred while evaluating your answer");
   }
+});
+
+elements.answer.addEventListener("focus", function startClock(event) {
+  timer = setInterval(updateClock, 1000);
+
+  elements.answer.removeEventListener("focus", startClock);
 });

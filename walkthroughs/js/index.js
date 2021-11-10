@@ -1,22 +1,7 @@
-function watchTurorialCallback(callback, errorCallback) {
-  let userLeft = false;
-  let userWatchingLiveStream = true;
+// Inserting/removing from an array
+let arr = [1, 2, 3, 4, 5];
+console.log(arr);
 
-  if (userLeft) {
-    errorCallback({
-      name: "User Left",
-      message: ":(",
-    });
-  } else if (userWatchingLiveStream) {
-    callback("Thumbs up and Subscribe");
-  }
-}
+arr.splice(3, 2, "ACE", "KING");
 
-watchTurorialCallback(
-  (message) => {
-    console.log(message);
-  },
-  (error) => {
-    console.log(error.name + " " + error.message);
-  }
-);
+console.log(arr);
