@@ -1,10 +1,10 @@
-# 11/9/21
+# 11/15/21
 
 ## To Do
 
-1. JS Promises Review
-2. JS Promises Quiz
-3. Codewars
-4. JS Fetch API Exercise
-5. Practice Time
-6. NPM and Webpack
+1. JS Review
+2. Codewars
+3. React Intro
+4. React Intro Exercise (briefly)
+5. React State and Props
+6. React State and Props Exercise

@@ -1,0 +1,20 @@
+.btn {
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  font-size: 20px;
+}
+
+.btn-primary {
+  background-color: #0094c8;
+}
+.btn-secondary {
+  background-color: gray;
+}
+.btn-success {
+  background-color: green;
+}
+.btn-danger {
+  background-color: tomato;
+}
