@@ -1,10 +1,9 @@
-# 11/15/21
+# 11/16/21
 
 ## To Do
 
-1. JS Review
+1. React Review
 2. Codewars
-3. React Intro
-4. React Intro Exercise (briefly)
-5. React State and Props
-6. React State and Props Exercise
+3. React State and Props Exercise
+4. React Lifecycle Methods Lecture
+5. React Lifecycle Methods Exercise
