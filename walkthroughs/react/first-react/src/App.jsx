@@ -1,44 +1,61 @@
-import { Component } from "react";
+/* eslint-disable eqeqeq */
 import "./App.css";
+import Title from "./components/Title";
+import Game from "./components/Game";
+import { Component } from "react";
 
 class App extends Component {
   constructor() {
     super();
 
-    this.title = "Rendering Lists";
     this.state = {
-      count: 1,
-      list: [1, 2, 3, 4, 5],
+      user: {},
+      hasUser: false,
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.searchUser = this.searchUser.bind(this);
   }
 
-  handleClick = () => {
-    this.setState({
-      count: this.state.count + 1,
-    });
-  };
+  searchUser(e) {
+    e.preventDefault();
+    let username = document.querySelector("#username").value;
 
-  updateNum = (idx) => {
-    let newList = this.state.list.map((num, i) => (i == idx ? num + 1 : num));
-    this.setState({ list: newList });
-  };
+    fetch("https://www.codewars.com/api/v1/users/" + username)
+      .then((res) => res.json())
+      .then((data) => this.setState({ user: data, hasUser: true }))
+      .catch((err) => alert(err.message));
+  }
 
   render() {
     return (
       <main className="App">
-        <p>{this.state.count}</p>
-        <button onClick={this.handleClick}>Increment Count</button>
-        <ul>
-          {this.state.list.map((num, idx) => {
-            return (
-              <li key={`key${num}+${idx}`} onClick={() => this.updateNum(idx)}>
-                {num}
-              </li>
-            );
-          })}
-        </ul>
+        <div className="mw-600">
+          <Title />
+          {/* <Game /> */}
+          <form action="" onSubmit={this.searchUser}>
+            <input
+              type="text"
+              name="username"
+              placeholder="Bryantellius"
+              id="username"
+            />
+            <button type="submit">Search</button>
+          </form>
+          <hr />
+          {this.state.hasUser ? (
+            <ul id="userDetails">
+              <li id="username">{this.state.user.username}</li>
+              <li id="honor">{this.state.user.honor}</li>
+              <ul id="skills">
+                {Object.keys(this.state.user.ranks.languages).map(
+                  (lang, idx) => (
+                    <li key={`${lang} + ${idx}`}>{lang}</li>
+                  )
+                )}
+              </ul>
+            </ul>
+          ) : null}
+        </div>
       </main>
     );
   }
