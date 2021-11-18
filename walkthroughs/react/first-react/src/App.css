@@ -13,6 +13,31 @@ body {
   margin: 0;
 }
 
+nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+ul {
+  max-width: 600px;
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 0;
+}
+
+nav > ul > li > a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.active {
+  border-bottom: 1px solid #ddd;
+}
+
 .App {
   min-height: 100vh;
   background: linear-gradient(to bottom left, #111, #444);

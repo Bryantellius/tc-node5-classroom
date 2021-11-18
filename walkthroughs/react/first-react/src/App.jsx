@@ -2,7 +2,6 @@
 import "./App.css";
 import Title from "./components/Title";
 import Game from "./components/Game";
-import { Component } from "react";
 
 const App = () => {
   return (

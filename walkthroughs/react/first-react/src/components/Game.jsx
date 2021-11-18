@@ -40,25 +40,26 @@ class Game extends Component {
   evaluateGuess(e) {
     e.preventDefault();
 
-    let guess = document.querySelector("#guess").value;
+    let guess = document.querySelector("#guess");
     let feedback;
     let score = this.state.score;
 
-    if (this.history.includes(guess)) {
-      feedback = `You already guessed ${guess}! Maybe try something else..`;
+    if (this.history.includes(guess.value)) {
+      feedback = `You already guessed ${guess.value}! Maybe try something else..`;
     } else {
-      if (guess > this.correctNum) {
+      if (guess.value > this.correctNum) {
         feedback = "Too high..";
-      } else if (guess < this.correctNum) {
+      } else if (guess.value < this.correctNum) {
         feedback = "Too low..";
       } else {
         feedback = `Correct! You scored ${this.state.score}.`;
         this.endGame();
       }
-      this.history.push(guess);
+      this.history.push(guess.value);
       score++;
     }
 
+    guess.value = "";
     this.setState({ feedback, score });
   }
 
