@@ -1,88 +1,81 @@
-import { Component } from "react";
 import { formatTime } from "../utils/clock";
+import Button from "./common/Button";
 import GameForm from "./GameForm";
+import { useState } from "react";
 
-class Game extends Component {
-  constructor() {
-    super();
+const Game = (props) => {
+  let correctNum = null;
+  let history = [];
+  let timer = null;
+  let secs = null;
 
-    this.correctNum = null;
-    this.history = [];
-    this.timer = null;
-    this.secs = null;
+  // state = {
+  //   score: 0,
+  //   feedback: "Guess as number between 1 and 100:",
+  //   isPlaying: false,
+  //   time: "00:00:00",
+  // };
 
-    this.state = {
-      score: 0,
-      feedback: "Guess as number between 1 and 100:",
-      isPlaying: false,
-      time: "00:00:00",
-    };
+  let [score, setScore] = useState(0);
+  let [feedback, setFeedback] = useState("Guess a number between 1 and 100:");
+  let [isPlaying, setIsPlaying] = useState(false);
+  let [time, setTime] = useState("00:00:00");
 
-    this.evaluateGuess = this.evaluateGuess.bind(this);
-    this.startGame = this.startGame.bind(this);
-    this.endGame = this.endGame.bind(this);
+  function startGame() {
+    secs = 0;
+    timer = setInterval(() => setTime(formatTime(++secs)), 1000);
+    correctNum = Math.floor(Math.random() * 100) + 1;
+    history = [];
+    setScore(0);
+    setIsPlaying(true);
+    setFeedback("Guess a number between 1 and 100:");
   }
 
-  startGame() {
-    this.secs = 0;
-    this.timer = setInterval(
-      () => this.setState({ time: formatTime(++this.secs) }),
-      1000
-    );
-    this.correctNum = Math.floor(Math.random() * 100) + 1;
-    this.setState({
-      score: 0,
-      isPlaying: true,
-      feedback: "Guess a number between 1 and 100:",
-    });
-  }
-
-  evaluateGuess(e) {
+  function evaluateGuess(e) {
     e.preventDefault();
 
     let guess = document.querySelector("#guess");
     let feedback;
-    let score = this.state.score;
+    let newScore = score;
 
-    if (this.history.includes(guess.value)) {
+    if (history.includes(guess.value)) {
       feedback = `You already guessed ${guess.value}! Maybe try something else..`;
     } else {
-      if (guess.value > this.correctNum) {
+      if (guess.value > correctNum) {
         feedback = "Too high..";
-      } else if (guess.value < this.correctNum) {
+      } else if (guess.value < correctNum) {
         feedback = "Too low..";
       } else {
-        feedback = `Correct! You scored ${this.state.score}.`;
-        this.endGame();
+        feedback = `Correct! You scored ${newScore}.`;
+        endGame();
       }
-      this.history.push(guess.value);
-      score++;
+      history.push(guess.value);
+      newScore++;
     }
 
     guess.value = "";
-    this.setState({ feedback, score });
+    setFeedback(feedback);
+    setScore(newScore);
   }
 
-  endGame() {
-    clearInterval(this.timer);
-    this.setState({ isPlaying: false });
+  function endGame() {
+    clearInterval(timer);
+    setIsPlaying(false);
   }
 
-  render() {
-    return (
-      <div className="game-container">
-        <p id="time">{this.state.time}</p>
-        <p id="feedback">{this.state.feedback}</p>
-        {this.state.isPlaying ? (
-          <GameForm evaluateGuess={this.evaluateGuess} />
-        ) : (
-          <button id="start" onClick={this.startGame}>
-            Start
-          </button>
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="game-container">
+      <p id="time">{time}</p>
+      <p id="feedback">{feedback}</p>
+      {isPlaying ? (
+        <GameForm evaluateGuess={evaluateGuess} />
+      ) : (
+        <Button id="start" onClick={startGame}>
+          Start
+        </Button>
+      )}
+    </div>
+  );
+};
 
 export default Game;

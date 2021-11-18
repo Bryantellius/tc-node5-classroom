@@ -38,6 +38,29 @@ nav > ul > li > a {
   border-bottom: 1px solid #ddd;
 }
 
+.btn {
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.invalid {
+  border: 3px solid tomato;
+}
+
+.codewars-container {
+  margin: 1rem 0;
+}
+
+.codewars-container > * {
+  margin: 0;
+}
+
+.text-special {
+  font-family: cursive;
+}
+
 .App {
   min-height: 100vh;
   background: linear-gradient(to bottom left, #111, #444);

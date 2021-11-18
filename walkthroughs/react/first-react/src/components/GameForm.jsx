@@ -1,3 +1,5 @@
+import Button from "./common/Button";
+
 const GameForm = (props) => {
   return (
     <form action="" onSubmit={props.evaluateGuess}>
@@ -10,7 +12,7 @@ const GameForm = (props) => {
         max="100"
         required
       />
-      <button type="submit">Guess</button>
+      <Button type="submit">Guess</Button>
     </form>
   );
 };
