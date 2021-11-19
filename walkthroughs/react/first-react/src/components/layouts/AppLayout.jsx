@@ -1,30 +1,35 @@
-import Button from "../common/Button";
-import { Fragment } from "react";
+import { NavLink } from "react-router-dom";
 
 const AppLayout = (props) => {
+  const activeLinkStyle = ({ isActive }) => (isActive ? "active" : null);
+
   return (
     <main className="App">
       <nav>
         <ul>
-          <li>Home</li>
-          <li>Game</li>
           <li>
-            {!props.isLoggedIn ? (
-              <input
-                aria-label="Enter your Codewars username"
-                type="text"
-                name="username"
-                id="username"
-                placeholder="Enter your Codewars Username.."
-                title="Enter your Codewars Username"
-                required
-              />
-            ) : null}
+            <NavLink
+              to="/"
+              className={activeLinkStyle}
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Button type="submit" onClick={props.toggleLogin}>
-              {props.isLoggedIn ? "Signout" : "Login"}
-            </Button>
+            <NavLink
+              to="game"
+              className={activeLinkStyle}
+            >
+              Game
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="codewars"
+              className={activeLinkStyle}
+            >
+              Bryantellius
+            </NavLink>
           </li>
         </ul>
       </nav>
