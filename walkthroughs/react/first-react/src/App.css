@@ -1,3 +1,7 @@
+:root {
+  --off-white: #ddd;
+}
+
 /* Add custom styling here */
 * {
   box-sizing: border-box;
@@ -14,28 +18,29 @@ body {
 }
 
 nav {
-  position: absolute;
+  position: fixed;
   top: 0;
-  width: 100%;
+  left: 1rem;
+  width: fit-content;
 }
 
 ul {
-  max-width: 600px;
-  width: 100%;
+  width: fit-content;
   list-style: none;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   padding-left: 0;
 }
 
-nav > ul > li > a {
-  color: #ddd;
+.link {
+  color: var(--off-white);
   text-decoration: none;
 }
 
 .active {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--off-white);
 }
 
 .btn {
@@ -64,7 +69,7 @@ nav > ul > li > a {
 .App {
   min-height: 100vh;
   background: linear-gradient(to bottom left, #111, #444);
-  color: #ddd;
+  color: var(--off-white);
   display: flex;
   justify-content: center;
   align-items: center;
