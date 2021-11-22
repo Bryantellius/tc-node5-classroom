@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { apiService } from "../utils/apiService";
-import { STUDIO_GHIBLI_URL } from "../utils/data";
+import { routes, STUDIO_GHIBLI_URL } from "../utils/data";
 
 const ListIndex = (props) => {
+  let [initialList, setInitialList] = useState([]);
   let [list, setList] = useState([]);
 
   let controller = new AbortController();
@@ -15,6 +16,21 @@ const ListIndex = (props) => {
     });
     if (!data) return alert("Failed to fetch " + props.endpoint);
     setList(data);
+    setInitialList(data);
+  };
+
+  const filterList = (e) => {
+    e.preventDefault();
+
+    let filteredList = [...initialList];
+
+    if (e.target.value) {
+      filteredList = filteredList.filter((item) =>
+        item[props.title].toLowerCase().includes(e.target.value.toLowerCase())
+      );
+    }
+
+    setList(filteredList);
   };
 
   useEffect(() => {
@@ -27,6 +43,14 @@ const ListIndex = (props) => {
   if (location.pathname.endsWith(props.endpoint)) {
     return (
       <div className="container">
+        <input
+          type="search"
+          name="query"
+          id="query"
+          onChange={filterList}
+          aria-label="Filter by Name"
+        />
+        <hr />
         <ul>
           {list.map((item) => (
             <li key={item.id}>
