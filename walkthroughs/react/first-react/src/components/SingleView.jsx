@@ -3,13 +3,13 @@ import { useNavigate, useParams, useLocation } from "react-router";
 import { apiService } from "../utils/apiService";
 import { STUDIO_GHIBLI_URL, routes } from "../utils/data";
 
-const SingleView = (props) => {
+const SingleView = () => {
   let [item, setItem] = useState({});
 
   let navigate = useNavigate();
-  let location = useLocation();
+  let { pathname } = useLocation();
   let { id } = useParams();
-  let endpoint = location.pathname.split("/")[1];
+  let endpoint = pathname.split("/")[1];
 
   const fetchFilm = async () => {
     let data = await apiService(`${STUDIO_GHIBLI_URL}${endpoint}/${id}`);
@@ -19,7 +19,7 @@ const SingleView = (props) => {
 
   useEffect(() => {
     fetchFilm();
-  }, [location.pathname]);
+  }, [pathname]);
 
   return (
     <div className="card">

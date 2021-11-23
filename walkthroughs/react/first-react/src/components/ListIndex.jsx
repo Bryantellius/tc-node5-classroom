@@ -3,7 +3,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import { apiService } from "../utils/apiService";
 import { routes, STUDIO_GHIBLI_URL } from "../utils/data";
 
-const ListIndex = (props) => {
+const ListIndex = ({ endpoint, title }) => {
   let [initialList, setInitialList] = useState([]);
   let [list, setList] = useState([]);
 
@@ -11,10 +11,10 @@ const ListIndex = (props) => {
   let location = useLocation();
 
   const fetchInitialData = async () => {
-    let data = await apiService(STUDIO_GHIBLI_URL + props.endpoint, "GET", {
+    let data = await apiService(STUDIO_GHIBLI_URL + endpoint, "GET", {
       signal: controller.signal,
     });
-    if (!data) return alert("Failed to fetch " + props.endpoint);
+    if (!data) return alert("Failed to fetch " + endpoint);
     setList(data);
     setInitialList(data);
   };
@@ -26,7 +26,7 @@ const ListIndex = (props) => {
 
     if (e.target.value) {
       filteredList = filteredList.filter((item) =>
-        item[props.title].toLowerCase().includes(e.target.value.toLowerCase())
+        item[title].toLowerCase().includes(e.target.value.toLowerCase())
       );
     }
 
@@ -40,7 +40,7 @@ const ListIndex = (props) => {
     };
   }, [location.pathname]);
 
-  if (location.pathname.endsWith(props.endpoint)) {
+  if (location.pathname.endsWith(endpoint)) {
     return (
       <div className="container">
         <input
@@ -55,7 +55,7 @@ const ListIndex = (props) => {
           {list.map((item) => (
             <li key={item.id}>
               <Link to={`${item.id}`} className="link">
-                {item[props.title]}
+                {item[title]}
               </Link>
             </li>
           ))}

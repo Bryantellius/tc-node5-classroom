@@ -18,9 +18,7 @@ const App = () => {
               <Route
                 key={idx + route.endpoint}
                 path={route.endpoint}
-                element={
-                  <ListIndex endpoint={route.endpoint} title={route.title} />
-                }
+                element={<ListIndex {...route} />}
               >
                 <Route path=":id" element={<SingleView />} />
               </Route>
