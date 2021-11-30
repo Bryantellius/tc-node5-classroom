@@ -1,11 +1,11 @@
-# 11/19/21
+# 11/30/21
 
 ## To Do
 
-1. React Review
+1. JS Review
 2. Codewars
-3. React Hooks Recap
-4. React Router Lecture
-5. React Router Exercise
-6. React Router Hooks
-7. React Router Hooks Exercise
+3. SQL Recap
+4. SQL Joins Lecture
+5. SQL Joins Exercise
+6. SQL Codewars
+7. SQL Tables and More
