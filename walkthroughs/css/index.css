@@ -15,7 +15,7 @@ html {
 .root {
   height: 100vh;
   overflow-y: auto;
-  background: linear-gradient(to bottom right, #673ab7, 70%, #3c096c);
+  background: linear-gradient(to bottom right, #3c096c, #673ab7, 70%, #3c096c);
   position: relative;
 }
 

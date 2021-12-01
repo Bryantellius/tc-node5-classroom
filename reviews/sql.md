@@ -1,4 +1,4 @@
-# Review 11/30/21: SQL
+# Review 11/30/21 - 11/31/21: SQL
 
 - SQL, _Structured Query Language_
 - Used to manage data within a database, usually tied to an application
@@ -13,6 +13,20 @@
 - `WHERE`, followed by a conditional that, if met, will determine which records to work with
 - `ORDER BY`, sorting results
 - `LIKE`, followed by a string pattern
+- `LIMIT`, limits the number of returned records
+- `OFFSET`, offsets the returned records from a limit clause
+- `HAVING`, conditional AFTER groupings
+
+## Order Of Clauses
+
+1. SELECT
+2. JOIN
+3. ON
+4. WHERE
+5. GROUP BY
+6. HAVING
+7. ORDER BY
+8. LIMIT, OFFSET
 
 ## Modifiers
 
@@ -52,3 +66,14 @@ Reduce many values to a single value
 - `CEIL()`
 - `FLOOR()`
 - `POW()`
+
+## Sub-Queries
+
+- Queries that return a value or values that are used within an outer query
+
+## Joins
+
+1. `INNER JOIN`, pulls records only if both tables have a match
+2. `LEFT JOIN`, pull all records from the left table, and only records from the right if there is a match
+
+- `ON`, column values to match
