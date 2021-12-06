@@ -1,27 +1,31 @@
 const fs = require("fs");
+const { Transform } = require("stream");
 const path = require("path");
 const { EventEmitter } = require("events");
 const errorEvents = new EventEmitter();
 const newsletter = new EventEmitter();
 
 errorEvents.on("error", handleError);
+
 newsletter.on("signup", ({ contact, res }) => {
-  fs.appendFile(
+  let newsletterWrite = fs.createWriteStream(
     path.join(__dirname, "src", "contacts.csv"),
-    `${contact.name},${contact.email}\n`,
-    (err) => {
-      if (err) {
-        console.error(err);
-        errorEvents.emit("error", {
-          err: {
-            message: "Failed to add name or email to contact list.",
-            status: 500,
-          },
-          res,
-        });
-      }
+    {
+      flags: "a",
     }
   );
+
+  newsletterWrite.on("error", (err) => {
+    errorEvents.emit("error", {
+      err: {
+        message: "Failed to add name or email to contact list.",
+        status: 500,
+      },
+      res,
+    });
+  });
+
+  newsletterWrite.write(`${contact.name},${contact.email}\n`);
 });
 
 function handleError({ err, res }) {
@@ -30,7 +34,7 @@ function handleError({ err, res }) {
   res.end();
 }
 
-function handleStaticAssets(res) {
+function handleStaticAssets(url, res) {
   let type = "application/javascript";
 
   switch (path.extname(url)) {
@@ -49,22 +53,30 @@ function handleStaticAssets(res) {
     case ".gif":
       type = "image/gif";
       break;
+    case ".txt":
+      type = "text/html";
+      break;
   }
 
-  fs.readFile(path.join(__dirname, "src" + url), (err, contents) => {
-    if (err) {
-      console.error(err);
-      errorEvents.emit("error", {
-        err: { message: "Can't send static asset", status: 500 },
-        res,
-      });
-    }
+  res.statusCode = 200;
+  res.setHeader("content-type", type);
 
-    res.statusCode = 200;
-    res.setHeader("content-type", type);
-    res.write(contents);
-    res.end();
+  const reportProgress = new Transform({
+    transform(chunk, encoding, callback) {
+      process.stdout.write("...");
+      callback(null, chunk);
+    },
   });
+
+  fs.createReadStream(path.join(__dirname, "src" + url))
+    .on("error", (err) =>
+      errorEvents.emit("error", {
+        err: { message: "Can't send static asset", status: 404 },
+        res,
+      })
+    )
+    .pipe(reportProgress)
+    .pipe(res);
 }
 
 class Route {

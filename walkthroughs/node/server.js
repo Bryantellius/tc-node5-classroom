@@ -8,8 +8,10 @@ const port = 8080;
 function requestHandler(req, res) {
   let { url, method } = req;
 
+  console.log(`${url}\t${method}\t${new Date().toLocaleTimeString()}`);
+
   if (path.extname(url)) {
-    handleStaticAssets(res);
+    handleStaticAssets(url, res);
   } else {
     const chunks = [];
 
