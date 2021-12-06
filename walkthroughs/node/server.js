@@ -1,44 +1,95 @@
 console.log("Node is the 💣\n");
 
-const http = require("http");
 const path = require("path");
-const { routes, handleStaticAssets } = require("./utils");
+const express = require("express");
+const morgan = require("morgan");
+const { createWriteStream, readFile } = require("fs");
 const port = 8080;
 
-function requestHandler(req, res) {
-  let { url, method } = req;
+const app = express();
 
-  console.log(`${url}\t${method}\t${new Date().toLocaleTimeString()}`);
+app.use(morgan("dev"));
 
-  if (path.extname(url)) {
-    handleStaticAssets(url, res);
-  } else {
-    const chunks = [];
+app.use(express.static(path.join(__dirname, "src")));
 
-    req.on("data", (chunk) => {
-      chunks.push(chunk);
-    });
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-    req.on("end", () => {
-      let reqBody = Buffer.concat(chunks).toString();
-
-      try {
-        reqBody = JSON.parse(reqBody);
-      } catch (err) {
-        let reqBodyObj = {};
-        let searchParams = new URLSearchParams(reqBody);
-        for (let prop of searchParams.keys()) {
-          reqBodyObj[prop] = searchParams.get(prop);
-        }
-        reqBody = reqBodyObj;
-      }
-
-      let route = routes[url + method] || routes["*"];
-      route.handleResponse(res, reqBody);
-    });
+app.get("/", (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname, "src", "index.html"));
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ msg: "Failed to read file" });
   }
-}
+});
 
-http
-  .createServer(requestHandler)
-  .listen(port, () => console.log("Server listening on port: " + port));
+app.get("/about", (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname, "src", "about.html"));
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ msg: "Failed to read file" });
+  }
+});
+
+app.get("/newsletter", (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname, "src", "newsletter.html"));
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ msg: "Failed to read file" });
+  }
+});
+
+app.post("/newsletter", (req, res) => {
+  try {
+    let contact = req.body;
+
+    let newsletterWrite = createWriteStream(
+      path.join(__dirname, "src", "contacts.csv"),
+      {
+        flags: "a",
+      }
+    );
+
+    newsletterWrite.write(`${contact.name},${contact.email}\n`);
+
+    res.json({ msg: "Successfully signed up for newsletter!" });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ msg: "Failed to add name to contact list" });
+  }
+});
+
+app.get("/pokemon/:id", (req, res) => {
+  try {
+    let { id } = req.params;
+
+    if (id) {
+      readFile(path.join(__dirname, "src/pokemon.json"), (err, data) => {
+        if (err) throw err;
+
+        let pokemon;
+
+        JSON.parse(data).pokemon.forEach((p, idx, arr) => {
+          if (p.id == id) {
+            return (pokemon = p);
+          }
+        });
+
+        if (pokemon) res.json(pokemon);
+        else res.status(500).json({ msg: "No such pokemon." });
+      });
+    } else {
+      throw new Error("Invalid query parameter");
+    }
+  } catch (e) {
+    console.log(e);
+    res
+      .status(500)
+      .json({ msg: e.message || "Failed to read from newsletter." });
+  }
+});
+
+app.listen(port, () => console.log("Server listening on port: " + port));
