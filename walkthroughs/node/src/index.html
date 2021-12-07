@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
+    <script src="index.js" defer></script>
   </head>
   <body>
     <main class="container">
@@ -16,13 +17,15 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
-          <li><a href="/newsletter">Newsletter</a></li>
+          <li><a href="/add">Add</a></li>
         </ul>
       </nav>
-      <div class="card">
-        <h1 class="title">Burlywood</h1>
-        <p class="subtitle">Enthusiasts Only</p>
-        <a href="/about" class="button">About</a>
+      <div class="container">
+        <h1 class="title">Pokemon</h1>
+        <p class="subtitle">Search the list below</p>
+        <a href="/add" class="button">Add</a>
+        <hr />
+        <div class="pokemonContainer row"></div>
       </div>
     </main>
   </body>

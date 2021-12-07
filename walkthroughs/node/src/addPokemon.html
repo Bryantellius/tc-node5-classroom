@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-    <script src="newsletter.js" defer></script>
+    <script src="addPokemon.js" defer></script>
   </head>
   <body>
     <main class="container">
@@ -17,15 +17,15 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
-          <li><a href="/newsletter">Newsletter</a></li>
+          <li><a href="/add">Add</a></li>
         </ul>
       </nav>
       <div class="card">
-        <h1>Join the Seriousness</h1>
-        <p>You'll know what you need to know.</p>
+        <h1>Add A Pokemon</h1>
+        <p>You know what you need to know.</p>
         <hr />
         <div class="alert hidden"></div>
-        <form action="/newsletter" method="POST">
+        <form>
           <div class="field">
             <label class="label">Name</label>
             <div class="control">
@@ -34,38 +34,28 @@
                 type="text"
                 name="name"
                 id="name"
-                placeholder="Jane Doe"
+                placeholder="New Pokemon"
                 required
               />
             </div>
           </div>
 
           <div class="field">
-            <label class="label">Email</label>
+            <label class="label">Candy</label>
             <div class="control">
               <input
                 class="input"
-                type="email"
-                name="email"
-                id="email"
-                placeholder="name@domain.com"
+                type="text"
+                name="candy"
+                id="candy"
+                placeholder="Reese's"
                 required
               />
             </div>
           </div>
-
           <div class="field">
             <div class="control">
-              <label class="checkbox">
-                <input type="checkbox" required />
-                I agree to the <a href="/rules">Rules of Burlywood.</a>
-              </label>
-            </div>
-          </div>
-
-          <div class="field">
-            <div class="control">
-              <button class="button is-link" type="submit">Submit</button>
+              <button class="button is-link" type="submit">Add</button>
             </div>
           </div>
         </form>
