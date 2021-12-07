@@ -1,11 +1,11 @@
-# 11/30/21
+# 12/07/21
 
 ## To Do
 
 1. JS Review
 2. Codewars
-3. SQL Recap
-4. SQL Joins Lecture
-5. SQL Joins Exercise
-6. SQL Codewars
-7. SQL Tables and More
+3. Express Recap
+4. Express.js Exercise
+5. Express/SQL Lecture
+6. Express/SQL Exercise
+7. Review/Final Project Ideas

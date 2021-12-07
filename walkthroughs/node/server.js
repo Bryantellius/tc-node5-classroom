@@ -1,95 +1,91 @@
-console.log("Node is the 💣\n");
-
-const path = require("path");
 const express = require("express");
-const morgan = require("morgan");
-const { createWriteStream, readFile } = require("fs");
-const port = 8080;
+
+let users = [
+  {
+    id: 1,
+    name: "Ben",
+    city: "Birmingham",
+  },
+  {
+    id: 2,
+    name: "Tanner",
+    city: "Birmingham",
+  },
+];
+
+class CredentialError extends Error {
+  constructor(message) {
+    super(message);
+
+    this.name = "CredentialError"
+    this.status = 401;
+  }
+}
 
 const app = express();
-
-app.use(morgan("dev"));
-
-app.use(express.static(path.join(__dirname, "src")));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/", (req, res, next) => {
   try {
-    res.sendFile(path.join(__dirname, "src", "index.html"));
-  } catch (e) {
-    console.log(e);
-    res.status(500).json({ msg: "Failed to read file" });
+    res.send("Hello World");
+  } catch (error) {
+    next(error);
   }
 });
 
-app.get("/about", (req, res) => {
+app.get("/about", (req, res, next) => {
   try {
-    res.sendFile(path.join(__dirname, "src", "about.html"));
-  } catch (e) {
-    console.log(e);
-    res.status(500).json({ msg: "Failed to read file" });
+    res.send("About");
+  } catch (error) {
+    next(error);
   }
 });
 
-app.get("/newsletter", (req, res) => {
+app.post("/signin", (req, res, next) => {
   try {
-    res.sendFile(path.join(__dirname, "src", "newsletter.html"));
-  } catch (e) {
-    console.log(e);
-    res.status(500).json({ msg: "Failed to read file" });
+    let { email, password } = req.body;
+
+    if (email == "test@test.com" && password == "password") {
+      res.redirect("/");
+    } else {
+      throw new CredentialError("Invalid login credentials");
+    }
+  } catch (error) {
+    next(error);
   }
 });
 
-app.post("/newsletter", (req, res) => {
+app.put("/user/:id", (req, res, next) => {
   try {
-    let contact = req.body;
-
-    let newsletterWrite = createWriteStream(
-      path.join(__dirname, "src", "contacts.csv"),
-      {
-        flags: "a",
-      }
-    );
-
-    newsletterWrite.write(`${contact.name},${contact.email}\n`);
-
-    res.json({ msg: "Successfully signed up for newsletter!" });
-  } catch (e) {
-    console.log(e);
-    res.status(500).json({ msg: "Failed to add name to contact list" });
-  }
-});
-
-app.get("/pokemon/:id", (req, res) => {
-  try {
+    let userUpdates = req.body;
     let { id } = req.params;
 
-    if (id) {
-      readFile(path.join(__dirname, "src/pokemon.json"), (err, data) => {
-        if (err) throw err;
+    if (!isNaN(parseInt(id))) {
+      users = users.map((user) => {
+        if (user.id == id) {
+          userUpdates = { ...user, ...userUpdates };
+          return userUpdates;
+        }
 
-        let pokemon;
-
-        JSON.parse(data).pokemon.forEach((p, idx, arr) => {
-          if (p.id == id) {
-            return (pokemon = p);
-          }
-        });
-
-        if (pokemon) res.json(pokemon);
-        else res.status(500).json({ msg: "No such pokemon." });
+        return user;
       });
+
+      res.json({ msg: "User updated!", user: userUpdates });
     } else {
-      throw new Error("Invalid query parameter");
+      throw new Error("Invalid ID value");
     }
-  } catch (e) {
-    console.log(e);
-    res
-      .status(500)
-      .json({ msg: e.message || "Failed to read from newsletter." });
+  } catch (error) {
+    next(error);
   }
 });
 
-app.listen(port, () => console.log("Server listening on port: " + port));
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).json({
+    name: err.name || "Unknown",
+    msg: err.message || "An unexpected error occurred",
+  });
+});
+
+app.listen(8080, () => console.log("Server listening on port 8080..."));
