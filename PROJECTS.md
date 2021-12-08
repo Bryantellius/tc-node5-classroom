@@ -9,4 +9,4 @@
 - Kevin Wong, car inventory site
 - Omar, portfolio site
 - Soma, github dashboard
-- Tanner Voss, 
+- Tanner Voss, API data populated site

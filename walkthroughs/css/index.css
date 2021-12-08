@@ -1,3 +1,8 @@
+:root {
+  --dark-primary: #3c096c;
+  --dark: #333;
+}
+ 
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,7 +20,7 @@ html {
 .root {
   height: 100vh;
   overflow-y: auto;
-  background: linear-gradient(to bottom right, #3c096c, #673ab7, 70%, #3c096c);
+  background: radial-gradient(var(--dark-primary), 40%, var(--dark));
   position: relative;
 }
 
