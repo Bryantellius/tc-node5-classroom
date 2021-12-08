@@ -1,13 +1,7 @@
 const mysql = require("mysql");
+const config = require("../../config");
 
-const config = {
-  host: "localhost",
-  user: "root",
-  password: "password",
-  database: "bestbuy",
-};
-
-const connection = mysql.createPool(config);
+const connection = mysql.createPool(config.mysql);
 
 const query = (querystring, values) => {
   return new Promise((resolve, reject) => {

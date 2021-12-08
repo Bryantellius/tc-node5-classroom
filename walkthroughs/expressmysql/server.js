@@ -1,8 +1,8 @@
 const express = require("express");
 const morgan = require("morgan");
+const config = require("./config");
 const router = require("./routes");
 
-const port = 8080;
 const app = express();
 
 app.use(morgan("dev"));
@@ -30,4 +30,6 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.listen(port, () => console.log("Server running on port " + port));
+app.listen(config.port, () =>
+  console.log("Server running on port " + config.port)
+);
