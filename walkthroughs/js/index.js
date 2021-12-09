@@ -71,3 +71,16 @@ let changeMessage = createMessage();
 
 changeMessage("New Message");
 changeMessage("Another message");
+
+// Reverse an array without .reverse()
+// HTMLCollection is an indexed list, but doesn't have a reverse method
+
+function reverse(str) {
+  let temp = "";
+  for (let i = 0; i < str.length; i++) {
+    temp = str[i] + temp;
+  }
+  return temp;
+}
+
+console.log(reverse("Ben"));
